@@ -1,0 +1,36 @@
+{
+  "skill_name": "candidate-screening",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Using the candidate-screening skill in this project, generate or refresh candidate-portrait.md from job-description.md. Then screen all profiles in potential-leads/ and create candidate reports under candidates/<candidate-name>/report.md, including scores and outreach drafts where appropriate.",
+      "expected_output": "A refreshed candidate-portrait.md and report.md files for each previously unchecked lead. Each report contains only Summary, Score, Must-have checklist, Gaps and risks, and Outreach message when the score is 60+. Processed leads are marked checked_not_proceeded in the manifest.",
+      "files": [
+        "job-description.md",
+        "potential-leads/"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The job-description.md file has changed. Use the candidate-screening workflow to make sure candidate-portrait.md and all candidate reports reflect the current vacancy.",
+      "expected_output": "The skill detects that job-description.md changed and regenerates candidate-portrait.md, while unchanged leads already marked checked_not_proceeded remain skipped during normal screening.",
+      "files": [
+        "job-description.md",
+        "candidate-portrait.md",
+        "potential-leads/",
+        "candidates/"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Who is the best candidate for the current vacancy among all screened leads? Refresh anything stale before answering.",
+      "expected_output": "A concise ranking answer based on existing screened reports, after processing only eligible unchecked or source-changed leads.",
+      "files": [
+        "job-description.md",
+        "candidate-portrait.md",
+        "potential-leads/",
+        "candidates/"
+      ]
+    }
+  ]
+}

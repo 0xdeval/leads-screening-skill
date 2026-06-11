@@ -1,0 +1,22 @@
+# Local screening inputs and generated outputs
+job-description.md
+candidate-portrait.md
+potential-leads/
+candidates/
+.candidate-screening/
+
+# Local agent/runtime state
+.omc/
+.omx/
+.claude/
+
+# Python and packaging output
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+
+# OS/editor files
+.DS_Store
+.idea/
+.vscode/

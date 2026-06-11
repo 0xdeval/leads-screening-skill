@@ -1,0 +1,23 @@
+name: Release skill archive
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: python3 -m unittest discover -s candidate-screening/tests -v
+      - name: Build skill archive
+        run: ./scripts/package-skill.sh
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" dist/candidate-screening.zip --generate-notes
