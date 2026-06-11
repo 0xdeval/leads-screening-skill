@@ -1,0 +1,20 @@
+{
+  "name": "leads-screening-skill",
+  "interface": {
+    "displayName": "Leads Screening Skill"
+  },
+  "plugins": [
+    {
+      "name": "candidate-screening",
+      "source": {
+        "source": "local",
+        "path": "./plugins/candidate-screening"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

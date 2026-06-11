@@ -4,29 +4,83 @@ A reusable Claude skill for screening recruiting leads against a vacancy. It mai
 
 The skill works with Claude Code and Claude Cowork. File management remains manual: place the vacancy and lead files into the expected folders, then ask Claude to screen them.
 
-## Install
+## Install Directly from GitHub
+
+Repository URL:
+
+```text
+https://github.com/0xdeval/leads-screening-skill
+```
 
 ### Claude Code
 
-Download this repository, then copy the complete `candidate-screening` folder into your user skills directory:
+Install the repository as a Claude plugin marketplace, then install the skill:
 
 ```bash
-mkdir -p ~/.claude/skills
-cp -R candidate-screening ~/.claude/skills/candidate-screening
+claude plugin marketplace add 0xdeval/leads-screening-skill
+claude plugin install candidate-screening@leads-screening-skill
 ```
 
 Restart Claude Code. The skill can trigger automatically for candidate-screening requests or be invoked as `/candidate-screening`.
 
-For project-only installation, copy the folder to `.claude/skills/candidate-screening` inside that project instead.
+For project-only installation:
+
+```bash
+claude plugin marketplace add 0xdeval/leads-screening-skill --scope project
+claude plugin install candidate-screening@leads-screening-skill --scope project
+```
 
 ### Claude Cowork
 
-1. Download `candidate-screening.zip` from the latest GitHub release.
-2. Open Claude Desktop and go to **Customize**.
-3. Choose **Skills** or **Plugins**, then choose **Upload skill**.
-4. Select `candidate-screening.zip` and enable it for Cowork.
+1. Open Claude Desktop and go to **Customize** → **Plugins**.
+2. Choose **Add marketplace**.
+3. Enter `https://github.com/0xdeval/leads-screening-skill`.
+4. Install and enable **Candidate Screening** for Cowork.
+
+If direct marketplace installation is unavailable in the installed Claude Desktop version, download `candidate-screening.zip` from the latest GitHub release and use **Upload skill**.
 
 The exact Customize labels can vary by Claude Desktop version. Upload the ZIP as a skill, not the full repository source ZIP.
+
+### OpenAI Codex with `$skill-installer`
+
+Ask Codex:
+
+```text
+$skill-installer install https://github.com/0xdeval/leads-screening-skill/tree/main/candidate-screening
+```
+
+Or run the installer helper with repository and skill path:
+
+```bash
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --repo 0xdeval/leads-screening-skill \
+  --path candidate-screening
+```
+
+Restart Codex after installation.
+
+### OpenAI Codex Plugin Marketplace
+
+Install the repository as a Codex marketplace, then install the plugin:
+
+```bash
+codex plugin marketplace add 0xdeval/leads-screening-skill
+codex plugin add candidate-screening@leads-screening-skill
+```
+
+Start a new Codex thread after installation.
+
+## Manual Installation
+
+The canonical skill is the complete `candidate-screening/` folder.
+
+```bash
+# Claude Code
+cp -R candidate-screening ~/.claude/skills/candidate-screening
+
+# OpenAI Codex
+cp -R candidate-screening ~/.codex/skills/candidate-screening
+```
 
 ## Set Up a Screening Folder
 
@@ -79,6 +133,17 @@ Run:
 ```
 
 The uploadable archive is written to `dist/candidate-screening.zip`.
+
+## Repository Discovery Metadata
+
+This repository includes:
+
+- `.claude-plugin/marketplace.json` and the wrapper's `.claude-plugin/plugin.json` for Claude Code and Claude Cowork.
+- `.agents/plugins/marketplace.json` for OpenAI Codex.
+- `candidate-screening/SKILL.md` as the canonical cross-platform skill.
+- `plugins/candidate-screening` as the Anthropic/OpenAI marketplace plugin wrapper.
+
+The marketplace wrapper contains a synchronized copy because installed plugins do not preserve skill symlinks. Run `./scripts/check-plugin-sync.sh` before publishing.
 
 ## Privacy
 

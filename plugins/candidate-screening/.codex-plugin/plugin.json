@@ -1,0 +1,42 @@
+{
+  "name": "candidate-screening",
+  "version": "1.1.0",
+  "description": "Screen recruiting leads against a vacancy, write scored reports, draft outreach, and rank candidates.",
+  "author": {
+    "name": "0xdeval",
+    "url": "https://github.com/0xdeval"
+  },
+  "homepage": "https://github.com/0xdeval/leads-screening-skill",
+  "repository": "https://github.com/0xdeval/leads-screening-skill",
+  "license": "MIT",
+  "keywords": [
+    "candidate-screening",
+    "recruiting",
+    "hiring",
+    "shortlisting",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Candidate Screening",
+    "shortDescription": "Screen and rank recruiting leads",
+    "longDescription": "Screen recruiting leads against a job description, maintain an ideal candidate portrait, write scored reports, draft personalized outreach for suitable candidates, and rank the screened pool.",
+    "developerName": "0xdeval",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/0xdeval/leads-screening-skill",
+    "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Screen all new candidates for this vacancy.",
+      "Who is the best candidate for the current role?",
+      "Refresh the candidate portrait and screen eligible leads."
+    ],
+    "brandColor": "#2563EB",
+    "screenshots": []
+  }
+}
