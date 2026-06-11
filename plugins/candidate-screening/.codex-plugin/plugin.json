@@ -1,6 +1,6 @@
 {
   "name": "candidate-screening",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Screen recruiting leads against a vacancy, write scored reports, draft outreach, and rank candidates.",
   "author": {
     "name": "0xdeval",

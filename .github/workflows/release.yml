@@ -19,7 +19,12 @@ jobs:
         run: ./scripts/check-plugin-sync.sh
       - name: Build skill archive
         run: ./scripts/package-skill.sh
+      - name: Validate release archives
+        run: |
+          unzip -t dist/candidate-screening-plugin.zip
+          unzip -p dist/candidate-screening-plugin.zip .claude-plugin/plugin.json | python3 -m json.tool
+          unzip -t dist/candidate-screening-skill.zip
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "${GITHUB_REF_NAME}" dist/candidate-screening.zip --generate-notes
+        run: gh release create "${GITHUB_REF_NAME}" dist/candidate-screening-plugin.zip dist/candidate-screening-skill.zip --generate-notes

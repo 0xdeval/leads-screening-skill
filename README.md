@@ -37,9 +37,9 @@ claude plugin install candidate-screening@leads-screening-skill --scope project
 3. Enter `https://github.com/0xdeval/leads-screening-skill`.
 4. Install and enable **Candidate Screening** for Cowork.
 
-If direct marketplace installation is unavailable in the installed Claude Desktop version, download `candidate-screening.zip` from the latest GitHub release and use **Upload skill**.
+If direct marketplace installation is unavailable in the installed Claude Desktop version, download `candidate-screening-plugin.zip` from the latest GitHub release and use **Upload plugin**.
 
-The exact Customize labels can vary by Claude Desktop version. Upload the ZIP as a skill, not the full repository source ZIP.
+The exact Customize labels can vary by Claude Desktop version. Upload `candidate-screening-plugin.zip`, not the raw skill ZIP or the full repository source ZIP.
 
 ### OpenAI Codex with `$skill-installer`
 
@@ -124,7 +124,7 @@ The job description changed. Refresh the candidate portrait and screen eligible 
 
 Claude Cowork and recent Claude Code versions may read PDFs directly. If local extraction is required, install Poppler (`pdftotext`/`pdftoppm`) or Python packages such as `pypdf` or `pdfplumber`.
 
-## Build the Cowork ZIP
+## Build Release ZIPs
 
 Run:
 
@@ -132,7 +132,10 @@ Run:
 ./scripts/package-skill.sh
 ```
 
-The uploadable archive is written to `dist/candidate-screening.zip`.
+The archives are written to:
+
+- `dist/candidate-screening-plugin.zip`: upload this to Claude Cowork. It contains `.claude-plugin/plugin.json` at the archive root.
+- `dist/candidate-screening-skill.zip`: raw skill folder for manual installation or inspection.
 
 ## Repository Discovery Metadata
 
